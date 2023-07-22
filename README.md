@@ -17,7 +17,6 @@
 文章使用 JSON 存储，的格式如下：
 ```
 {
-    "language": "zh",
     "articles": [
         {
             "title": "标题示例",
