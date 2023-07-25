@@ -23,8 +23,6 @@ def produce_article():
     
     article["article"] = re.sub(r"{{\w+}}", number, st.session_state["article"]["article"])
 
-    st.write(re.findall(r"({{)(\w+)(}})", st.session_state["article"]["article"]))
-
     article["hints"] = [hint[1] for hint in re.findall(r"({{)(\w+)(}})", st.session_state["article"]["article"])]
 
     return article
@@ -59,6 +57,5 @@ def create(filename):
                     json.dump(data, f, ensure_ascii=False, indent=4)
             elif st.session_state["saveMode"] == "New file":
                 data = {"articles": [article]}
-                st.write(st.session_state["filepath"])
                 with open(st.session_state["filepath"], 'w', encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=4)

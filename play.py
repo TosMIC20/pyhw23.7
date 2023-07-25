@@ -27,6 +27,7 @@ def play(article):
     # Input
     if len(st.session_state["Input"]) < len(article["hints"]):
         st.info("Hint: "+article["hints"][len(st.session_state["Input"])])
+        st.progress(len(st.session_state["Input"])/len(article["hints"]), "Progress")
         col1, col2 = st.columns(2)
         with col1:
             text = st.text_input("Enter", key="text", placeholder="Please Enter:",label_visibility="collapsed")

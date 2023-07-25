@@ -1,4 +1,14 @@
 {
     "articles": [
+        {
+            "title": "a",
+            "article": "b",
+            "hints": []
+        },
+        {
+            "title": "aasdf",
+            "article": "b",
+            "hints": []
+        }
     ]
 }

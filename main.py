@@ -20,7 +20,9 @@ if __name__ == "__main__":
     (articles, args) = ld.load()
     if len(articles) == 0:
         st.warning("No article detected in file! Create one!")
-        
+
+    st.write(f"File opened: {args.file}")
+    
     # Select mode
     st.radio("Mode:", ("Create", "Play"), key="mode", horizontal=True)
 
