@@ -13,7 +13,7 @@ def replace(article, keys):
     """
     def key(matched):
         return "**"+keys[int(matched.groups()[1])-1]+"**"
-    return re.sub("(\{\{)([0-9])(\}\})", key, article)
+    return re.sub("(\{\{)(\d+)(\}\})", key, article)
 
 def clear_text():
     if st.session_state["text"] != "":
@@ -34,7 +34,7 @@ def play(article):
             if text:
                 st.session_state["Input"].append(text)
         with col2:
-            st.button("Clear", on_click = clear_text)
+            st.button("Submit and Clear", on_click = clear_text)
     
     # Replace and display
     if len(st.session_state["Input"]) == len(article["hints"]):

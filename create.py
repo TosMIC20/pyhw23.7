@@ -5,8 +5,6 @@ import json
 def collect_text():
     if st.session_state["title"] != "" and st.session_state["text_area"] != "":
         st.session_state["article"] = {"title": st.session_state["title"], "article": st.session_state["text_area"]}
-        st.session_state["title"] = ""
-        st.session_state["text_area"] = ""
     else:
         st.session_state["article"] = {}
 
@@ -55,7 +53,12 @@ def create(filename):
                 data["articles"].append(article)
                 with open(filename, 'w', encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=4)
+                st.info("Save success!")
             elif st.session_state["saveMode"] == "New file":
                 data = {"articles": [article]}
-                with open(st.session_state["filepath"], 'w', encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=4)
+                try:
+                    with open(st.session_state["filepath"], 'w', encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
+                    st.info("Save success!")
+                except:
+                    st.warning("Error! Check the path/name you entered!")
