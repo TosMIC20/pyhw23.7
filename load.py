@@ -7,7 +7,7 @@ def tell_format(data):
         arts = data["articles"]
     except:
         return False
-    
+
     for art in arts:
         if "title" not in art or "article" not in art or "hints" not in art:
             return False
@@ -37,8 +37,12 @@ def parser_data():
     return args
 
 def default_file():
-    with open("./mondai/default.json", 'r', encoding="utf-8") as f:
-        return json.load(f)
+    data = {}
+    data["article"] = []
+    data["article"].append({"title": "贵系日常", "article": "我们都爱{{1}}这门课程。这门课程是多么的{{2}}，以至于所有人都在课程上认真地{{3}}。在设计数字电路时,我们需要运用到逻辑门、半导体存储器等知识。这些内容相互联系,共同构成复杂的数字电路。这门课能启发我们的逻辑思维能力和科学思考能力。通过为难我们的练习和作业,我们的理解能力和解决问题的能力得到了提高。这些将对今后的{{4}}和工作有很大益处。", "hints": ["教材名称", "形容词", "动词，与学生相关", "你最喜欢做的事情"]})
+    with open("./mondai/default.json", 'w', encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    return data
 
 def read_articles(filename):
     """
@@ -68,4 +72,4 @@ def read_articles(filename):
 def load():
     args = parser_data()
     data = read_articles(args.file)
-    return (data["articles"], args.article)
+    return (data["articles"], args)

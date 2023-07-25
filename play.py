@@ -16,7 +16,8 @@ def replace(article, keys):
     return re.sub("(\{\{)([0-9])(\}\})", key, article)
 
 def clear_text():
-    st.session_state["text"] = ""
+    if st.session_state["text"] != "":
+        st.session_state["text"] = ""
 
 def play(article):
     # Init
